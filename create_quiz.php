@@ -18,16 +18,20 @@
             }
         }
 
-        $quizName = ($_POST['quizName']);
-        $afterText = ($_POST['afterText']);
-        $quizText = ($_POST['quizText']);
-        $quizHeading = ($_POST['quizHeading']);
-        $quizButton = ($_POST['quizButton']);
+        $quizName = htmlspecialchars($_POST['quizName']);
+        $afterText = htmlspecialchars($_POST['afterText']);
+        $quizText = htmlspecialchars($_POST['quizText']);
+        $quizHeading = htmlspecialchars($_POST['quizHeading']);
+        $quizButton = htmlspecialchars($_POST['quizButton']);
+        $quizSubmit = htmlspecialchars($_POST['quizSubmit']);
+        $quizNotice = htmlspecialchars($_POST['quizNotice']);
         $backgroundColor = substr($_POST['backgroundColor'], 1);
+        $backgroundColor = htmlspecialchars($backgroundColor);
         $color = substr($_POST['color'], 1);
+        $color = htmlspecialchars($color);
 
         if(!$errorMessage) {
-            if( $id = $quiz->createQuiz($quizName, $afterText, $quizHeading, $quizText, $quizButton, $backgroundColor, $color, $_SESSION['id'])) {
+            if( $id = $quiz->createQuiz($quizName, $afterText, $quizHeading, $quizText, $quizButton, $quizSubmit, $quizNotice, $backgroundColor, $color, $_SESSION['id'])) {
                 $_SESSION['quiz_id'] = $id;
                 header('Location: questions.php');
                 exit();
@@ -65,6 +69,14 @@
         <div>
             <label for="quiz-button">Quiz Button Text</label>
             <input type="text" name="quizButton" id="quiz-button" value="<?php echo $_POST['quizButton'] ?? ''; ?>">
+        </div>
+        <div>
+            <label for="quiz-submit">Quiz Submit Text</label>
+            <input type="text" name="quizSubmit" id="quiz-submit" value="<?php echo $_POST['quizSubmit'] ?? ''; ?>">
+        </div>
+        <div>
+            <label for="quiz-notice">Quiz Notice Text</label>
+            <textarea name="quizNotice" id="quiz-notice" cols="30" rows="5" placeholder="Message to user before he go to results" value="<?php echo $_POST['quizNotice'] ?? ''; ?>"></textarea>
         </div>
         <div>
             <label for="background-color">Choose background color</label>

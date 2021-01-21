@@ -8,8 +8,11 @@ if(empty($_POST["name"]) || empty($_POST["email"]) || empty($_POST["phone"])) {
 
 if(isset($_POST["submit"])) {
     $fullName = $database->escape_string($_POST["name"]);
+    $fullName = htmlspecialchars($fullName);
     $email = $database->escape_string($_POST["email"]);
+    $email = htmlspecialchars($email);
     $phone = $database->escape_string($_POST["phone"]);
+    $phone = htmlspecialchars($phone);
     $result = $quiz->validateFolk($email);
     if($result->num_rows > 0) {
         $folk = $quiz->validateFolk($email);
@@ -101,7 +104,7 @@ foreach ($_POST as $k => $v) {
         
                 }
 
-                echo "<p>EXPLANATION: " . $step['stepDescription'] . "</p>";
+                echo "<p class='expl'>EXPLANATION: " . $step['stepDescription'] . "</p><br>";
 
                 $i++;               
 
@@ -114,5 +117,7 @@ foreach ($_POST as $k => $v) {
         $percentage = ($ca/$i) * 100;
 
         
-        echo "<center><p>Congratulations, you completed the Quiz. Your score is: $percentage%</p></center>";
-        
+        echo "<center><p class='congrats'>Congratulations, you completed the Quiz. Your score is: $percentage%</p></center>";
+?>
+
+<h2 class="repeatthequiz"><a href='quiz.php?id=<?php echo $quiz_id["quiz_id"]; ?>'>Repeat the Quiz!?</a></h2>

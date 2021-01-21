@@ -20,9 +20,13 @@
     if(isset($_POST['submit'])) {
         
         $fullName = $_POST['fullName'];
+        $fullName = htmlspecialchars($fullName);
         $email = $_POST['email'];
+        $email = htmlspecialchars($email);
         $password = $_POST['password'];
+        $password = htmlspecialchars($password);
         $confirmPassword = $_POST['confirmPassword'];
+        $confirmPassword = htmlspecialchars($confirmPassword);
 
         if(!$users->validateUserInput($fullName, $email, $password, $confirmPassword)) {
             $users->createUser($fullName, $email, $password);

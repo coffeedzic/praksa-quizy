@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2021 at 12:43 PM
+-- Generation Time: Jan 21, 2021 at 12:01 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -77,6 +77,8 @@ CREATE TABLE `quiz` (
   `quizHeading` varchar(150) NOT NULL,
   `quizText` text NOT NULL,
   `quizButton` varchar(50) NOT NULL,
+  `quizSubmit` varchar(50) NOT NULL,
+  `quizNotice` varchar(255) NOT NULL,
   `backgroundColor` varchar(50) NOT NULL,
   `color` varchar(50) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -95,7 +97,7 @@ CREATE TABLE `quiz` (
 CREATE TABLE `step` (
   `id` int(11) NOT NULL,
   `stepName` varchar(150) NOT NULL,
-  `stepDescription` text NOT NULL DEFAULT 'Korisnik nije dao objašnjenje',
+  `stepDescription` varchar(255) NOT NULL DEFAULT '''Korisnik nije dao objašnjenje''',
   `stepStatus` set('0','1') NOT NULL DEFAULT '0',
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `quiz_id` int(11) NOT NULL

@@ -11,7 +11,9 @@
     if(isset($_POST['submit'])) {
 
         $email = $_POST['email'];
+        $email = htmlspecialchars($email);
         $password = $_POST['password'];
+        $password = htmlspecialchars($password);
 
         if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errorMessage = 'Please provide valid email';

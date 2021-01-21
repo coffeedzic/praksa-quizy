@@ -64,6 +64,16 @@
                     <label for="calculator-button">Quiz Button Text</label>
                     <input type="text" name="quizButton" id="calculator-button" disabled value="<?php echo $oneQuiz['quizButton']; ?>">
                 </div>
+                <div>
+                    <label for="calculator-submit">Quiz Submit Text</label>
+                    <input type="text" name="quizSubmit" id="calculator-submit" disabled value="<?php echo $oneQuiz['quizSubmit']; ?>">
+                </div>
+            </div>
+            <div class="d-flex jc-sb gap-m">
+                <div>
+                    <label for="calculator-notice">Quiz Notice Text</label>
+                    <textarea name="quizNotice" id="calculator-notice" cols="30" rows="5" disabled value="<?php echo $oneQuiz['quizNotice']; ?>"><?php echo $oneQuiz['quizNotice']; ?></textarea>
+                </div>
             </div>
             <div class="d-flex jc-sb gap-m">
                 <div>

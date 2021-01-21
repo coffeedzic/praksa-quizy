@@ -232,9 +232,7 @@
     margin: 3rem 0;
   }
   .input-wrapper__options {
-    display: -ms-grid;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+    display: -webkit-inline-box;
     gap: 4rem;
   }
   input[type="radio"] {
@@ -243,7 +241,8 @@
   .option__label {
     cursor: pointer;
     height: 100%;
-    padding: 1rem;
+    width: 100%;
+    padding: 1rem 2.5rem;
     margin-bottom: 1rem;
     text-align: center;
     background: #fff;
@@ -257,7 +256,7 @@
     background: var(--info);
     color: #fff;
   }
-  input[type="radio"]:checked + .option__label::after {
+  /*input[type="radio"]:checked + .option__label::after {
     font-family: FontAwesome;
     border: 2px solid var(--input-border);
     content: "\f00c";
@@ -276,7 +275,7 @@
     line-height: 50px;
     -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.2);
-  }
+  }*/
   .option-span-text {
     display: block;
     text-transform: uppercase;
@@ -625,6 +624,35 @@
     padding: 1.5rem 0;
     text-transform: capitalize;
   }
+
+  #estimate-text, #calculator-text, #calculator-notice {
+    display: flex;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .expl {
+    font-size: 1.7rem;
+  }
+
+  .congrats {
+    font-size: 1.9rem;
+    background-color: #fff;
+    color: #212529;
+    padding: 1rem;
+  }
+
+  .repeatthequiz {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .repeatthequiz a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #dc3545;
+    font-weight: 600;
+  }
   
   .edit-icon {
     color: var(--info);
@@ -812,7 +840,8 @@
     margin-bottom: 1rem;
   }
   #quiz-text,
-  #afterText {
+  #afterText,
+  #quiz-notice {
     width: 100%;
     padding: 2rem 1rem;
   }

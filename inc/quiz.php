@@ -2,7 +2,7 @@
 
 class Quiz {
 
-    public function createQuiz($quizName, $afterText, $quizHeading, $quizText, $quizButton, $backgroundColor, $color, $id) {
+    public function createQuiz($quizName, $afterText, $quizHeading, $quizText, $quizButton, $quizSubmit, $quizNotice, $backgroundColor, $color, $id) {
 
         global $database;
 
@@ -11,12 +11,14 @@ class Quiz {
         $quizHeading = $database->escape_string($quizHeading);
         $quizText = $database->escape_string($quizText);
         $quizButton = $database->escape_string($quizButton);
+        $quizSubmit = $database->escape_string($quizSubmit);
+        $quizNotice = $database->escape_string($quizNotice);
         $backgroundColor = $database->escape_string($backgroundColor);
         $color = $database->escape_string($color);
         $id = $database->escape_string($id);
 
-        $sql = "INSERT INTO quiz (quizName, afterText, quizHeading, quizText, quizButton, backgroundColor, color, user_id) VALUES ('";
-        $sql .= $quizName . "','" . $afterText . "','" . $quizHeading . "','" . $quizText . "','" . $quizButton . "','" . $backgroundColor . "','";
+        $sql = "INSERT INTO quiz (quizName, afterText, quizHeading, quizText, quizButton, quizSubmit, quizNotice, backgroundColor, color, user_id) VALUES ('";
+        $sql .= $quizName . "','" . $afterText . "','" . $quizHeading . "','" . $quizText . "','" . $quizButton . "','" . $quizSubmit . "','" . $quizNotice . "','" . $backgroundColor . "','";
         $sql .= $color . "','" . $id . "')";
 
         $result = $database->query($sql);
@@ -233,12 +235,12 @@ class Quiz {
 
     }
 
-    public function updateQuiz($id, $name, $atext, $text, $heading, $button, $bg, $color) {
+    public function updateQuiz($id, $name, $atext, $text, $heading, $button, $submit, $notice, $bg, $color) {
 
         global $database;
 
         $sql = "UPDATE quiz SET quizName = '" . $name . "', afterText = '" . $atext . "', quizText = '" . $text . "', quizHeading = '" . $heading . "', ";
-        $sql .= "quizButton = '" . $button . "', backgroundColor = '" . $bg . "', color = '" . $color . "' WHERE id = '" . $id . "'";
+        $sql .= "quizButton = '" . $button . "', quizSubmit = '" . $submit . "', quizNotice = '" . $notice . "', backgroundColor = '" . $bg . "', color = '" . $color . "' WHERE id = '" . $id . "'";
 
         $result = $database->query($sql);
 

@@ -119,12 +119,14 @@
         $quizText = htmlspecialchars($_POST['quizText']);
         $quizHeading = htmlspecialchars($_POST['quizHeading']);
         $quizButton = htmlspecialchars($_POST['quizButton']);
+        $quizSubmit = htmlspecialchars($_POST['quizSubmit']);
+        $quizNotice = htmlspecialchars($_POST['quizNotice']);
         $backgroundColor = substr($_POST['backgroundColor'], 1);
         $backgroundColor = htmlspecialchars($backgroundColor);
         $color = substr($_POST['color'], 1);
         $color = htmlspecialchars($color);
         if(!$errorMessage) {
-            $quiz->updateQuiz($quizId, $quizName, $afterText, $quizText, $quizHeading, $quizButton, $backgroundColor, $color);
+            $quiz->updateQuiz($quizId, $quizName, $afterText, $quizText, $quizHeading, $quizButton, $quizSubmit, $quizNotice, $backgroundColor, $color);
             header('Location: ./edit.php?id=' . $quizId);
             exit();
         }

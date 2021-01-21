@@ -61,15 +61,21 @@
                         </div>
                     </div>
                 <?php } ?>
-                <div class="input-wrapper">
-                    <label for="name">Name</label>
-                        <input type="text" id="name" name="name"><br>                    
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" name="email"><br>                    
-                    <label for="phone">Phone: </label>
-                    <input type="tel" id="phone" name="phone" placeholder="+38761234567" pattern="+[0-9]{12}"><br>                    
-                    <button name="submit" class="intro__button">GO TO RESULTS</button>
-                    <p>*** YOU MUST COMPLETE THE FORM TO SEE RESULTS</p>                   
+                <div class="input-wrapper form login">
+                    <div>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name">
+                    </div>                    
+                    <div>
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="Your E-mail">
+                    </div>
+                    <div>                    
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+38761234567" pattern="+[0-9]{12}">
+                    </div>                   
+                    <button name="submit" class="intro__button"><?php echo $oneQuiz['quizSubmit']; ?></button>
+                    <p><?php echo $oneQuiz['quizNotice']; ?></p>                   
                 </div>
                 </form>
                 
