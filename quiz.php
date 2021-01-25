@@ -31,8 +31,11 @@
 
 <body style="background-color: #<?php echo $oneQuiz['backgroundColor']; ?>; color: #<?php echo $oneQuiz['color']; ?> ">
     <?php require_once('theme/nav.php'); ?>
-    <main>
+    <main>        
         <div class="intro">
+            <?php if(isset($_SESSION["errorMessage"])) { ?>
+                <h2 class="red"><?php echo "ERROR: " . $_SESSION["errorMessage"] ?? ''; ?></h2>
+            <?php } ?> 
             <h1 class="intro__heading"><?php echo $oneQuiz['quizHeading']; ?></h1>
             <p class="intro__paragraph"><?php echo $oneQuiz['quizText']; ?></p>
             <button class="intro__button"><?php echo $oneQuiz['quizButton']; ?></button>
@@ -75,7 +78,7 @@
                         <input type="tel" id="phone" name="phone" placeholder="+38761234567" pattern="+[0-9]{12}">
                     </div>                   
                     <button name="submit" class="intro__button"><?php echo $oneQuiz['quizSubmit']; ?></button>
-                    <p><?php echo $oneQuiz['quizNotice']; ?></p>                   
+                    <p><?php echo $oneQuiz['quizNotice']; ?></p>                  
                 </div>
                 </form>
                 
@@ -84,9 +87,12 @@
                     <p>No default quizzes or no questions added to current quiz...</p>
                 </div>
             <?php } ?>
+            
+            
     </main>
     <script src="<?php base(); ?>js/script.js"></script>
     <script src="<?php base(); ?>js/check_iframe.js"></script>
+    <script src="js/error_message.js"></script>
 </body>
 <?php } else { ?>
 <body>

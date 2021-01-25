@@ -47,7 +47,7 @@
                         <a href="inc/remove_example.inc.php?id=<?php echo $row['id']; ?>" class="calculator__btn primary-btn">Remove from examples</a>
                     <?php } ?>
                 <div class="iframe">
-                    <input type="text" class="iframe__text" value="<iframe src='<?php echo $iframeLink; base(); echo '/quiz.php?id=' .  $row['id']; ?>' width='100%' height='500px' title='Calculator iframe'></iframe>">
+                    <input type="text" class="iframe__text" value="<iframe src='<?php echo $iframeLink; base(); echo '/quiz.php?id=' .  $row['id']; ?>' width='100%' height='500px' title='Quiz iframe'></iframe>">
                     <button class="iframe__copy">Copy iframe</button>
                 </div>
                 <div class="modal-overlay">

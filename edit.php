@@ -101,14 +101,30 @@
                     <h3>Question</h3>
                     <p class="error-message"></p>
                     <input type="text" name="<?php echo $oneQuiz['id'] . '-' . $stepRow['id'] . '-question'; ?>" disabled value="<?php echo $stepRow['stepName']; ?>">
+                    <div class="explanation">
+                    <h4>Explanation</h4>
+                    <input type="textbox" name="<?php echo $oneQuiz['id'] . '-' . $stepRow['id'] . '-explanation'; ?>" disabled value="<?php echo $stepRow['stepDescription']; ?>">
+                    </div>
                     <div class="edit-form__icons">  
                         <span class="edit-icon">
                             <i class="fas fa-edit"></i>
                         </span>
-                        <a href="inc/delete_step.inc.php?quiz_id=<?php echo $oneQuiz['id'] . '&id=' . $stepRow['id']; ?>"" class="delete-icon">
-                            <i class="fas fa-trash-alt"></i>
-                        </a>
+                        <i class="fas fa-trash-alt delete-question red"></i>
                     </div>
+                    <div class="modal-overlay">
+                        <div class="modal">
+                            <div class="modal__heading">
+                                <h3>DELETE CONFIRMATION</h3>
+                            </div>
+                            <div class="modal__warning">
+                                 <p>Are you sure you want to delete question?</p>
+                            </div>
+                            <div class="modal__button">
+                            <a href="inc/delete_step.inc.php?quiz_id=<?php echo $oneQuiz['id'] . '&id=' . $stepRow['id']; ?>" class="calculator__btn delete">DELETE</a>
+                                <span class="calculator__btn cancel">Cancel</span>
+                            </div>
+                            </div>
+                            </div>
                     <button name="saveQuestion" class="save save__calc">Save</button>
                     <button class="cancel">Cancel</button>
                 </div>
@@ -132,13 +148,25 @@
                                 <span class="edit-icon">
                                     <i class="fas fa-edit"></i>
                                 </span>
-                                <a href="../inc/delete_option.inc.php?quiz_id=<?php echo $oneQuiz['id'] . '&id=' . $optionRow['id']; ?>" class="delete-icon">
-                                    <i class="fas fa-trash-alt"></i>
-                                </a>
+                                    <i class="fas fa-trash-alt delete-option red"></i>
                             </div>
                             <div class="edit-buttons">
                                 <button class="save save__option" name="saveOptions">Save</button>
                                 <button class="cancel">Cancel</button>    
+                            </div>
+                            <div class="modal-overlay">
+                                <div class="modal">
+                                    <div class="modal__heading">
+                                        <h3>DELETE CONFIRMATION</h3>
+                                    </div>
+                                    <div class="modal__warning">
+                                        <p>Are you sure you want to delete answer?</p>
+                                    </div>
+                                    <div class="modal__button">
+                                    <a href="../inc/delete_option.inc.php?quiz_id=<?php echo $oneQuiz['id'] . '&id=' . $optionRow['id']; ?>" class="calculator__btn delete">DELETE</a>
+                                    <span class="calculator__btn cancel">Cancel</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <?php } ?>
@@ -147,6 +175,10 @@
             </div>
             <?php } ?>
     </form>
+
+    
+
+
     <?php } else { ?>
     <div>
         <p>Sorry, you don't have any questions in your Quiz.</p>
@@ -157,5 +189,7 @@
     <script src="<?php base(); ?>js/sidebar.js"></script>
     <script src="<?php base(); ?>js/edit.js"></script>
     <script src="<?php base(); ?>js/preventSubmit.js"></script>
+    <script src="<?php base(); ?>js/modal_2.js"></script>
+    <script src="<?php base(); ?>js/modal_3.js"></script>
 </body>
 </html>

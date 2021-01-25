@@ -2,8 +2,18 @@
 
 require ("inc/inc.php");
 
+foreach ($_POST as $k => $v) {
+    if(strpos($k, 'answer')) {
+        $stepId = explode('-', $v)[0];
+        $quiz_id = $quiz->getStepById($stepId);
+        $quiz_id = mysqli_fetch_array($quiz_id);
+        $_SESSION["current_quiz"] = $quiz_id["quiz_id"];
+    }
+}
+
 if(empty($_POST["name"]) || empty($_POST["email"]) || empty($_POST["phone"])) {
-    header('Location: index.php');
+    $_SESSION["errorMessage"] = "You must fill all fields to see quiz results";
+    header('Location: quiz.php?id=' . $quiz_id["quiz_id"]);
 } else {
 
 if(isset($_POST["submit"])) {
@@ -14,6 +24,7 @@ if(isset($_POST["submit"])) {
     $phone = $database->escape_string($_POST["phone"]);
     $phone = htmlspecialchars($phone);
     $result = $quiz->validateFolk($email);
+    unset($_SESSION["errorMessage"]);
     if($result->num_rows > 0) {
         $folk = $quiz->validateFolk($email);
         $folk = mysqli_fetch_array($folk);
@@ -26,17 +37,8 @@ if(isset($_POST["submit"])) {
     }
     
 } else {
-    header('Location: index.php');
+    header('Location: quiz.php?id=' . $quiz_id["quiz_id"]);
     exit();
-}
-
-foreach ($_POST as $k => $v) {
-    if(strpos($k, 'answer')) {
-        $stepId = explode('-', $v)[0];
-        $quiz_id = $quiz->getStepById($stepId);
-        $quiz_id = mysqli_fetch_array($quiz_id);
-        $_SESSION["current_quiz"] = $quiz_id["quiz_id"];
-    }
 }
 
 }

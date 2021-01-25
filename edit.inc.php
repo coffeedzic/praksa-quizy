@@ -73,32 +73,35 @@
             exit();
         }
         else {
-            header('Location: ./edit.php?i=' . $quiz_id);
+            header('Location: ./edit.php?id=' . $quiz_id);
             exit();
         }
     }
 
     //update question field
     if(isset($_POST['saveQuestion'])) {
-        require_once('db_connection.php');
-        require_once('functions.inc.php');
+
+        $errorMessage = "";
+
         foreach($_POST as $k => $v) {
             if(strpos($k, 'question')) {
                 $question = htmlspecialchars($v);
-                $calc_id = htmlspecialchars(explode('-', $k)[0]);
+                $quiz_id = htmlspecialchars(explode('-', $k)[0]);
                 $id = htmlspecialchars(explode('-', $k)[1]);
             }
         }
-        $query = "UPDATE step SET stepName = ? WHERE id = ?";
-        $stmt = $conn->stmt_init();
-        if(!$stmt -> prepare($query)) {
-            header('Location: ./edit/' . $calc_id . '&error=stmtError');
-            exit();
-        } else {
-            $stmt->bind_param('ss', $question, $id);
-            $stmt->execute();
-            $stmt->close();
-            header('Location: ./edit/' . $calc_id);
+
+        foreach($_POST as $k => $v) {
+            if(strpos($k, 'explanation')) {
+            $explanation = htmlspecialchars($v);
+            $quiz_id = htmlspecialchars(explode('-', $k)[0]);
+            $id = htmlspecialchars(explode('-', $k)[1]);
+            }
+        }
+
+        if(!$errorMessage) {
+            $quiz->updateStep($id, $question, $explanation);
+            header('Location: ./edit.php?id=' . $quiz_id);
             exit();
         }
     }
