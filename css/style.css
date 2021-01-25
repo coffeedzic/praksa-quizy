@@ -95,6 +95,10 @@
     width: calc(50% - 2rem);
   }
   /* ##### NAVIGATION ##### */
+
+  .red {
+    color: #dc3545;
+  }
   
   header {
     background-color: #fff;
@@ -635,6 +639,14 @@
     font-size: 1.7rem;
   }
 
+  .explanation {
+    margin-top: 2rem;
+  }
+
+  .explanation h4 {
+    margin-bottom: 1rem;
+  }
+
   .congrats {
     font-size: 1.9rem;
     background-color: #fff;
@@ -802,7 +814,7 @@
   .message {
     position: absolute;
     top: -4.5rem;
-    left: 50%;
+    width: 50%;
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
