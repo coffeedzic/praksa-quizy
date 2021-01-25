@@ -21,6 +21,17 @@
             }
         }
     }
+
+    $numofanswers = 0;
+    $j = 1;
+    while(isset($_POST[$j . 'check'])) {
+        $numofanswers = $numofanswers + 1;
+        $j++;
+    }
+
+    if($numofanswers == 0) {
+        $errorMessage =  "Question must have at least one correct answer.";
+    }
     
     if(!$errorMessage) {
 
