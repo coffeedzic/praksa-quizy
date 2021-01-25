@@ -34,10 +34,10 @@ class Quiz {
             $error = 'Question and option fields can\'t be empty';
             return $error;
         }
-        if(!preg_match('/^[a-z0-9A-Z\s\?]*$/', $string)) {
+        /*if(!preg_match('/^[a-z0-9A-Z\s\?]*$/', $string)) {
             $error = 'Please provide valid input, no special characters allowed in option and question fields';
             return $error;
-        }
+        }*/
         return $error;
     }
 
@@ -287,6 +287,18 @@ class Quiz {
         $sql = "DELETE FROM step WHERE id = $id";
 
         return $database->query($sql);
+
+    }
+
+    public function updateStep($id, $stepName, $stepDescription) {
+
+        global $database;
+
+        $sql = "UPDATE step SET stepName = '" . $stepName . "', stepDescription = '" . $stepDescription . "' WHERE id = '" . $id . "'";
+
+        $result = $database->query($sql);
+
+        return $result;
 
     }
 }
